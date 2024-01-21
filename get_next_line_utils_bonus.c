@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mben-jad <ben-jad@student.1337.ma>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 00:34:32 by mben-jad          #+#    #+#             */
-/*   Updated: 2024/01/21 14:40:23 by mben-jad         ###   ########.fr       */
+/*   Created: 2024/01/21 17:49:55 by mben-jad          #+#    #+#             */
+/*   Updated: 2024/01/21 17:49:58 by mben-jad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_strlen(char *str)
 {
@@ -49,7 +49,7 @@ char	*ft_strdup(char *str)
 	if (!str)
 		return (NULL);
 	res = malloc(sizeof(char) * ft_strlen(str) + 1);
-	if (res == NULL)
+	if (!res)
 		return (NULL);
 	while (str[i])
 	{

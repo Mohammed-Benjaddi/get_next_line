@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mben-jad <ben-jad@student.1337.ma>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 23:55:00 by mben-jad          #+#    #+#             */
-/*   Updated: 2024/01/21 17:46:49 by mben-jad         ###   ########.fr       */
+/*   Created: 2024/01/21 17:51:06 by mben-jad          #+#    #+#             */
+/*   Updated: 2024/01/21 17:58:37 by mben-jad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_strjoin(char *s1, char *s2)
 {
@@ -31,7 +31,7 @@ static char	*ft_strjoin(char *s1, char *s2)
 	if (!res)
 		return (NULL);
 	ft_strlcpy(res, s1);
-	ft_strlcat(res + s1_len, s2);
+	ft_strlcpy(res + s1_len, s2);
 	free(s1);
 	return (res);
 }
@@ -46,7 +46,7 @@ static char	*found_new_line(char **res, int index)
 	line = malloc(sizeof(char) * index + 1);
 	if (!line)
 		return (NULL);
-	temp_res = ft_strdup(*res + (index));
+	temp_res = ft_strdup(*res + index);
 	if (!temp_res)
 		return (NULL);
 	while (i < index)
@@ -71,7 +71,7 @@ static char	*handle_res(char **res, int index)
 	temp = NULL;
 	if (index != -1)
 	{
-		line = found_new_line(res, index);
+		line = found_new_line(&*res, index);
 		if (!line)
 			return (NULL);
 	}
@@ -122,15 +122,15 @@ static char	*current_line(int fd, char **res)
 
 char	*get_next_line(int fd)
 {
-	static char	*res;
+	static char	*res[OPEN_MAX];
 
-	if (fd < 0)
+	if (fd > OPEN_MAX || fd < 0)
 		return (NULL);
-	if (fd < 0 || fd == 1 || fd == 2 || read(fd, "", 0) < 0 || BUFFER_SIZE <= 0)
+	if (read(fd, "", 0) < 0 || BUFFER_SIZE <= 0 || fd < 0)
 	{
-		free(res);
-		res = NULL;
+		free(res[fd]);
+		res[fd] = NULL;
 		return (NULL);
 	}
-	return (current_line(fd, &res));
+	return (current_line(fd, &res[fd]));
 }

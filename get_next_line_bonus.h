@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mben-jad <ben-jad@student.1337.ma>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 00:26:46 by mben-jad          #+#    #+#             */
-/*   Updated: 2024/01/21 18:02:53 by mben-jad         ###   ########.fr       */
+/*   Created: 2024/01/21 17:59:54 by mben-jad          #+#    #+#             */
+/*   Updated: 2024/01/21 18:01:16 by mben-jad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 0
 # endif
 
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 
