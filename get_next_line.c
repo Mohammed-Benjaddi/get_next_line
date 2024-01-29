@@ -6,11 +6,12 @@
 /*   By: mben-jad <ben-jad@student.1337.ma>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:55:00 by mben-jad          #+#    #+#             */
-/*   Updated: 2024/01/21 17:46:49 by mben-jad         ###   ########.fr       */
+/*   Updated: 2024/01/27 14:31:21 by mben-jad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 static char	*ft_strjoin(char *s1, char *s2)
 {
@@ -124,8 +125,6 @@ char	*get_next_line(int fd)
 {
 	static char	*res;
 
-	if (fd < 0)
-		return (NULL);
 	if (fd < 0 || fd == 1 || fd == 2 || read(fd, "", 0) < 0 || BUFFER_SIZE <= 0)
 	{
 		free(res);
